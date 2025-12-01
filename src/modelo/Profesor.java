@@ -17,10 +17,10 @@ public class Profesor extends Persona implements Serializable {
         cursos = new ArrayList<>();
     }
 
-    // Constructor principal: código siempre como String limpio
+    // constructor principal: código siempre como String limpio
     public Profesor(String nombre, String apellido, String dni, String codigo, int grado, String seccion){
         super(nombre, apellido, dni);
-        this.codigoProfesor = codigo.trim(); // limpia espacios
+        this.codigoProfesor = codigo.trim(); 
         this.gradoP = grado;
         this.seccionP = seccion;
 
@@ -32,7 +32,7 @@ public class Profesor extends Persona implements Serializable {
         cursos.add("Religión");
     }
 
-    // Getters y setters
+    // getters y setters
     public String getCodigoProfesor() { return codigoProfesor; }
     public void setCodigoProfesor(String codigoProfesor) { this.codigoProfesor = codigoProfesor.trim(); }
 
@@ -44,3 +44,4 @@ public class Profesor extends Persona implements Serializable {
 
     public ArrayList<String> getCursos() { return cursos; }
 }
+
