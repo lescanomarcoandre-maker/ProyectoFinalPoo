@@ -10,13 +10,13 @@ public class FrmRegistrarEstudiante extends javax.swing.JInternalFrame {
     public FrmRegistrarEstudiante() {
         initComponents();
         
-        // Grados 1 a 6
+        // grados 1 a 6
         cmbGrado.removeAllItems();
         for(int i = 1; i <= 6; i++) {
             cmbGrado.addItem(String.valueOf(i));
         }
 
-        // Secciones
+        // secciones
         cmbSeccion.removeAllItems();
         cmbSeccion.addItem("A");
         cmbSeccion.addItem("B");
@@ -249,7 +249,7 @@ public class FrmRegistrarEstudiante extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.");
             return;
         }
-        // Actualizar datos
+        // actualizar datos
         e.setNombre(nom);
         e.setApellido(ape);
         e.setSeccion(seccion);
@@ -270,7 +270,7 @@ public class FrmRegistrarEstudiante extends javax.swing.JInternalFrame {
             AppData.getInstance().getGE().eliminarEstudiante(e);
             JOptionPane.showMessageDialog(this, "Estudiante eliminado.");
 
-            // Limpiar campos
+            // limpiar campos
             txtNombre.setText("");
             txtApellido.setText("");
             txtDni.setText("");
