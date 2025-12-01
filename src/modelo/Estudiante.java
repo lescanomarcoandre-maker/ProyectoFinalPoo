@@ -13,7 +13,7 @@ public class Estudiante extends Persona implements Serializable {
     private int grado;
     private ArrayList<Asistencia> asistencias;
 
-    // Constructor vacío
+    // constructor vacío
     public Estudiante() {
         this.bimestres = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
@@ -22,7 +22,7 @@ public class Estudiante extends Persona implements Serializable {
         this.asistencias = new ArrayList<>();
     }
 
-    // Constructor con datos
+    // constructor con datos
     public Estudiante(String nombre, String apellido, String dni, String codigo, String seccion) {
         super(nombre, apellido, dni);
         this.codigo = codigo;
@@ -36,7 +36,7 @@ public class Estudiante extends Persona implements Serializable {
         this.asistencias = new ArrayList<>();
     }
 
-    // Getters y Setters
+    // getters y setters
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
 
@@ -49,7 +49,7 @@ public class Estudiante extends Persona implements Serializable {
     public ArrayList<Asistencia> getAsistencias() { return asistencias; }
     public void setAsistencias(ArrayList<Asistencia> asistencias) { this.asistencias = asistencias; }
 
-    // Métodos para bimestres
+    // metodos 
     public Bimestre getBimestre(int n) {
         if (n >= 1 && n <= bimestres.size()) {
             return bimestres.get(n - 1);
@@ -67,3 +67,4 @@ public class Estudiante extends Persona implements Serializable {
         asistencias.add(a);
     }
 }
+
