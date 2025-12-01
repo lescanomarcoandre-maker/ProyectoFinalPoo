@@ -18,7 +18,7 @@ public class Persona implements Serializable{
         this.dni = dni;
     }
     
-    // Getters y Setters
+    // getters y Setters
     public String getNombre(){ return nombre; }
     public void setNombre(String nombre){ this.nombre = nombre; }
     
@@ -28,3 +28,4 @@ public class Persona implements Serializable{
     public String getDni(){ return dni; }
     public void setDni(String dni){ this.dni = dni; }
 }
+
