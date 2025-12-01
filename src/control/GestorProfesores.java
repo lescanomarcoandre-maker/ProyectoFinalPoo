@@ -10,22 +10,22 @@ public class GestorProfesores implements Serializable{
     
     private ArrayList<Profesor> lista = new ArrayList<>();
 
-    // CREATE
+    
     public void registrarProfesor(Profesor p){
         if(p != null) lista.add(p);
     }
 
-    // Buscar profesor por código seguro
+    // buscar profesor por código seguro
     public Profesor buscarPorCodigo(String codigo) {
-        for(Profesor p : lista){ // tu ArrayList de profesores
-            if(p.getCodigoProfesor().equals(codigo)){ // usar .equals, NO ==
+        for(Profesor p : lista){ // ArrayList de profesores
+            if(p.getCodigoProfesor().equals(codigo)){ 
                 return p;
             }
         }
         return null; // si no encuentra
     }
 
-    // Verifica si el DNI ya existe
+    // verifica si el DNI ya existe
     public boolean dniExiste(String dni){
         if(dni == null) return false;
         for(Profesor p : lista){
@@ -40,7 +40,7 @@ public class GestorProfesores implements Serializable{
         return lista;
     }
 
-    // Verifica si un salón ya tiene profesor asignado
+    // verifica si un salón ya tiene profesor asignado
     public boolean salonOcupado(int grado, String seccion) {
         if(seccion == null) return false;
         for(Profesor p : lista) {
@@ -60,7 +60,6 @@ public class GestorProfesores implements Serializable{
         return new ArrayList<>(lista);
     }
 
-    // UPDATE
     public boolean actualizarProfesor(String codigo, Profesor nuevosDatos){
         Profesor p = buscarPorCodigo(codigo);
         if(p == null || nuevosDatos == null) return false;
@@ -84,7 +83,6 @@ public class GestorProfesores implements Serializable{
         return null;
     }
 
-    // DELETE
     public boolean eliminarProfesor(String codigo){
         Profesor p = buscarPorCodigo(codigo);
         if(p != null){
@@ -94,3 +92,4 @@ public class GestorProfesores implements Serializable{
         return false;
     }
 }
+
