@@ -22,7 +22,7 @@ public class FrmRegistroNotas extends javax.swing.JInternalFrame {
         this.seccion = seccion;
         this.grado = grado;
         
-        // Mostrar datos fijos
+        // mostrar datos
         cmbCurso.removeAllItems();
         
         for(String c : profesor.getCursos()){
@@ -213,16 +213,16 @@ public class FrmRegistroNotas extends javax.swing.JInternalFrame {
             
             Bimestre b = est.getBimestre(bim);
 
-            // PRIMERO obtiene las notas del curso
+            // obtiene las notas del curso
             Bimestre.NotasPorCurso n = b.getNotas(curso);
 
-            // Luego crea la fila
+            //  crea la fila
             Object fila[] = new Object[]{
                 est.getCodigo(),
                 est.getNombre(),
                 est.getApellido(),
 
-                // Notas del curso
+                // notas del curso
                 n.getTS()[0],   // TS (promedio)
                 n.getPC1(),
                 n.getPC2(),
@@ -265,13 +265,13 @@ public class FrmRegistroNotas extends javax.swing.JInternalFrame {
             Bimestre b = est.getBimestre(bim);
 
             try {
-                // Leer valores de la tabla
+                // lee valores de la tabla
                 double ts = Double.parseDouble(modelo.getValueAt(i, 3).toString());
                 double pc1 = Double.parseDouble(modelo.getValueAt(i, 4).toString());
                 double pc2 = Double.parseDouble(modelo.getValueAt(i, 5).toString());
                 double ef  = Double.parseDouble(modelo.getValueAt(i, 6).toString());
 
-                // Actualizar notas
+                // actualizar notas
                 Bimestre.NotasPorCurso n = b.getNotas(curso);
 
                 n.setTS(new double[]{ ts, ts, ts, ts });
@@ -334,7 +334,7 @@ public class FrmRegistroNotas extends javax.swing.JInternalFrame {
         String curso = cmbCurso.getSelectedItem().toString();
         int bimestre = Integer.parseInt(cmbBimestre.getSelectedItem().toString());
 
-        // Limpiar tabla
+        // limpiar tabla
         DefaultTableModel modelo = (DefaultTableModel) tblNotas.getModel();
         modelo.setRowCount(0);
 
