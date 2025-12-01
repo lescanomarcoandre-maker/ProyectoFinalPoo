@@ -9,7 +9,7 @@ public class GestorNotas implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    // Guardar las 4 TS de un bimestre para un CURSO específico
+    // guardar las 4 TS de un bimestre para un CURSO específico
     public void registrarTS(Estudiante e, int bimestre, String curso, double[] notas){
         Bimestre b = e.getBimestre(bimestre);
 
@@ -17,7 +17,7 @@ public class GestorNotas implements Serializable{
         n.setTS(notas);
     }
 
-    // Guardar o actualizar nota individual (PC1, PC2, EF) para un curso
+    // guardar o actualizar nota individual (PC1, PC2, EF) para un curso
     public void registrarNota(Estudiante e, int bimestre, String curso, String tipo, double valor){
         Bimestre b = e.getBimestre(bimestre);
         Bimestre.NotasPorCurso n = b.getNotas(curso);
@@ -31,12 +31,12 @@ public class GestorNotas implements Serializable{
         n.calcularPromedio();
     }
 
-    // Obtener todas las notas del bimestre
+    // obtener todas las notas del bimestre
     public Bimestre obtenerNotas(Estudiante e, int bimestre){
         return e.getBimestre(bimestre);
     }
 
-    // Actualizar todas las notas del bimestre para un curso
+    // actualizar todas las notas del bimestre para un curso
     public void actualizarNotas(Estudiante e, int bimestre, String curso,
                                 double[] ts, double pc1, double pc2, double ef){
 
@@ -51,7 +51,7 @@ public class GestorNotas implements Serializable{
         n.calcularPromedio();
     }
 
-    // Eliminar todas las notas del bimestre para un curso
+    // eliminar todas las notas del bimestre para un curso
     public void eliminarNotas(Estudiante e, int bimestre, String curso){
         Bimestre b = e.getBimestre(bimestre);
         Bimestre.NotasPorCurso n = b.getNotas(curso);
@@ -64,7 +64,7 @@ public class GestorNotas implements Serializable{
         n.calcularPromedio();
     }
 
-    // Mostrar notas en consola (debug)
+    // mostrar notas en consola (debug)
     public void mostrarNotas(Estudiante e, String curso){
         for(int i=1; i<=4; i++){
             Bimestre b = e.getBimestre(i);
@@ -83,3 +83,4 @@ public class GestorNotas implements Serializable{
         }
     }
 }
+
