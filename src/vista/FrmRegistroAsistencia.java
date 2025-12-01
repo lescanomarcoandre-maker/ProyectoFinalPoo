@@ -23,10 +23,10 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
         this.grado = grado;
         this.seccion = seccion;
 
-        // Llenar combos
+        // llenar combos
         cmbBimestre.removeAllItems();
         for (int i = 1; i <= 4; i++) cmbBimestre.addItem(String.valueOf(i));
-        cmbBimestre.setSelectedIndex(0);  // Seleccion por defecto
+        cmbBimestre.setSelectedIndex(0);  // seleccion por defecto
 
         cmbCurso.removeAllItems();
         
@@ -35,16 +35,16 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
             cmbCurso.addItem(c);
         }
         
-        cmbCurso.setSelectedIndex(0); // Seleccion por defecto
+        cmbCurso.setSelectedIndex(0); // seleccion por defecto
 
         cmbDia.removeAllItems();
         for (int i = 1; i <= 40; i++) cmbDia.addItem(String.valueOf(i));
-        cmbDia.setSelectedIndex(0);  // Seleccion por defecto
+        cmbDia.setSelectedIndex(0);  // seleccion por defecto
 
         lblGrado.setText("Grado: " + grado);
         lblSeccion.setText("Sección: " + seccion);
 
-        inicializando = false;  // Ya terminó la inicialización
+        inicializando = false;  //aqui ya terminó la inicialización
     }
     
     @SuppressWarnings("unchecked")
@@ -267,7 +267,7 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
             }
         }
         
-        // Mostrar mensaje de confirmación
+        // mostrar mensaje de confirmación
         JOptionPane.showMessageDialog(this, "Asistencia guardada.");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -289,7 +289,7 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
             return;
         }
 
-        // Buscar profesor
+        // buscar profesor
         Profesor prof = AppData.getInstance().getGP().buscarPorCodigo(codigo);
 
         if(prof == null){
@@ -297,10 +297,10 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
             return;
         }
 
-        // Actualizar profesor en formulario
+        // actualizar profesor en formulario
         this.profesor = prof;
 
-        // Recargar cursos
+        // recargar cursos
         cmbCurso.removeAllItems();
         if(prof.getCursos() != null){
             for(String c : prof.getCursos()){
@@ -309,22 +309,22 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
         }
         cmbCurso.setSelectedIndex(0);
 
-        // Validaciones de selección
+        // validaciones de selección
         if(cmbCurso.getSelectedItem() == null){
             JOptionPane.showMessageDialog(this, "Debe seleccionar un curso.");
             return;
         }
 
-        // Obtener curso, bimestre y día
+        // obtener curso, bimestre y día
         String curso = cmbCurso.getSelectedItem().toString();
         int bimestre = Integer.parseInt(cmbBimestre.getSelectedItem().toString());
         int dia = Integer.parseInt(cmbDia.getSelectedItem().toString()) - 1;
 
-        // Limpiar tabla
+        // limpiar tabla
         DefaultTableModel modelo = (DefaultTableModel) tblAsistencia.getModel();
         modelo.setRowCount(0);
 
-        // Cargar estudiantes del salón
+        // cargar estudiantes del salón
         for(Estudiante est : AppData.getInstance().getGE().listarPorSalon(prof.getGradoP(), prof.getSeccionP())){
             Bimestre.AsistenciasPorCurso asisCurso =
                     est.getBimestre(bimestre).getAsistenciaCurso(curso);
@@ -344,14 +344,14 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
     
     private void actualizarTablaSiYaBusco() {
-        // Verificar si el código del profesor fue ingresado
+        // verificar si el código del profesor fue ingresado
         if (txtCodigoProfesor.getText().trim().isEmpty()) return;
 
-        // Buscar el profesor
+        // buscar el profesor
         Profesor p = AppData.getInstance().getGP().buscarPorCodigo(txtCodigoProfesor.getText().trim());
         if (p == null) return;
         
-        // Obtener el curso y el bimestre seleccionados
+        // obtiene el curso y el bimestre seleccionados
         if(cmbCurso.getSelectedItem() == null){
             return; // evita el crash
         }
@@ -359,11 +359,11 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
         String bimestre = cmbBimestre.getSelectedItem().toString();
 
         DefaultTableModel modelo = (DefaultTableModel) tblAsistencia.getModel();
-        modelo.setRowCount(0);  // Limpiar la tabla antes de cargar los datos
+        modelo.setRowCount(0);  // limpia la tabla antes de cargar los datos
 
-        // Buscar estudiantes y cargar su asistencia para el curso seleccionado
+        // sirve para buscar estudiantes y cargar su asistencia para el curso seleccionado
         for (Estudiante est : AppData.getInstance().getGE().listarPorSalon(p.getGradoP(), p.getSeccionP())) {
-            // Crear estructura de asistencia si no existe
+            // crea estructura de asistencia si no existe
             int dia = Integer.parseInt(cmbDia.getSelectedItem().toString()) - 1;
 
             Bimestre.AsistenciasPorCurso asisCurso =
@@ -376,7 +376,7 @@ public class FrmRegistroAsistencia extends javax.swing.JInternalFrame {
                 asist = asisCurso.getPresentes().get(dia) ? "A" : "F";
             }
             
-            // Agregar una fila en la tabla con la información de asistencia
+            // agregar una fila en la tabla con la información de asistencia
             modelo.addRow(new Object[]{
                 est.getCodigo(),
                 est.getNombre(),
