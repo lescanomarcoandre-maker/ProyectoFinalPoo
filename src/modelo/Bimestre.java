@@ -7,31 +7,31 @@ import java.util.HashMap;
 public class Bimestre implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    // Mapas
+    // mapas
     private HashMap<String, NotasPorCurso> cursos = new HashMap<>();
     private HashMap<String, AsistenciasPorCurso> asistenciasCursos = new HashMap<>();
 
-    // Constructor
+    // constructor
     public Bimestre() {
         cursos = new HashMap<>();
         asistenciasCursos = new HashMap<>();
     }
 
-    // Métodos para obtener o crear notas de un curso
+    // metodos para obtener o crear notas de un curso
     public NotasPorCurso getNotas(String curso) {
         return cursos.computeIfAbsent(curso, c -> new NotasPorCurso());
     }
 
-    // Métodos para obtener o crear asistencias de un curso
+    // metodos para obtener o crear asistencias de un curso
     public AsistenciasPorCurso getAsistenciaCurso(String curso) {
         return asistenciasCursos.computeIfAbsent(curso, c -> new AsistenciasPorCurso());
     }
 
-    // Clases internas serializables
+    // clases internas serializables
     public static class NotasPorCurso implements Serializable {
         private static final long serialVersionUID = 1L;
 
-        private double[] ts = new double[4]; // Trabajos
+        private double[] ts = new double[4]; 
         private double pc1;
         private double pc2;
         private double ef;
@@ -71,3 +71,4 @@ public class Bimestre implements Serializable {
         public ArrayList<Boolean> getPresentes() { return presentes; }
     }
 }
+
